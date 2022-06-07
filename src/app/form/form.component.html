@@ -1,0 +1,80 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Rellenar los siguientes campos:</ion-label>
+        </ion-list-header>
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+          <ion-item>
+            <ion-label position="floatig">Nombre(s)</ion-label>
+            <ion-input formControlName="name"></ion-input>
+          </ion-item>
+
+          <ion-label *ngIf="isSumitted && errorControl?.name.errors?.required" color="dager" class="ion-padding">
+            El campo nombre es requerido
+          </ion-label>
+
+          <ion-label *ngIf="isSumitted && errorControl?.name.errors?.minlength" color="dager" class="ion-padding">
+            El nombre debe tener almenos 5 caracteres
+          </ion-label>
+
+          <ion-item>
+            <ion-label position="floatig">Apellidos</ion-label>
+            <ion-input formControlName="lastname"></ion-input>
+          </ion-item>
+
+          <ion-label *ngIf="isSumitted && errorControl?.lastname.errors?.required" color="dager" class="ion-padding">
+            El campo Apellido es requerido
+          </ion-label>
+
+          <ion-label *ngIf="isSumitted && errorControl?.lastname.errors?.minlength" color="dager" class="ion-padding">
+            El Apellido debe tener almenos 5 caracteres
+          </ion-label>
+
+          <ion-item>
+            <ion-label position="floatig">Email</ion-label>
+            <ion-input formControlName="email" type="email"></ion-input>
+          </ion-item>
+
+          <ion-label *ngIf="isSumitted && errorControl?.email.errors?.required" color="dager" class="ion-padding">
+            El campo Email es requerido
+          </ion-label>
+
+          <ion-label *ngIf="isSumitted && errorControl?.email.errors?.pattern" color="dager" class="ion-padding">
+            El Email no es valido
+          </ion-label>
+
+          <ion-item>
+            <ion-label position="floatig">Edad</ion-label>
+            <ion-input formControlName="age" type="number"></ion-input>
+          </ion-item>
+
+          <ion-label *ngIf="isSumitted && errorControl?.age.errors?.required" color="dager" class="ion-padding">
+            El campo Edades requerido
+          </ion-label>
+
+          <ion-label *ngIf="isSumitted && errorControl?.age.errors?.pattern" color="dager" class="ion-padding">
+            Solo son valido los numeros
+          </ion-label>
+
+          <ion-item>
+            <ion-label position="floatig">Telefono</ion-label>
+            <ion-input formControlName="mobile" type="tel"></ion-input>
+          </ion-item>
+
+          <ion-label *ngIf="isSumitted && errorControl?.mobile.errors?.required" color="dager" class="ion-padding">
+            El campo Telefono requerido
+          </ion-label>
+
+          <ion-label *ngIf="isSumitted && errorControl?.mobile.errors?.pattern" color="dager" class="ion-padding">
+            Solo son valido los numeros
+          </ion-label>
+
+          <ion-button type="submit" expand="block">Agregar contacto</ion-button>
+        </form>
+      </ion-list>
+      <ng-template></ng-template>
+    </ion-col>
+  </ion-row>
+</ion-grid>
